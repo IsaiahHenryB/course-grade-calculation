@@ -25,5 +25,32 @@
 // EXAMPLE: "You have 1200 points. You need 1050 points to earn 90% in this course."
 // The default should say, "To receive a specified grade, please enter either 90, 80, 70 or 60 to find out how many additional points you need."
 
+const score = Number(prompt(`What is your current score? (0-2500)`));
+const total = 2500;
+const scoreCalc = (score, total) =>{
+    const percent = Math.round((score / total)*(100));
+    return percent
+}
+document.getElementById("grade").innerHTML = (`your grade is ${scoreCalc(score)}%!`)
+const goal = Number(prompt(`What is the grade you want? 90, 80, 70 or 60?`))
 
+const resolution = (goal, total, score) =>{
+    switch (goal){
+        case 90:
+            return `You are currently at ${score} pionts and need ${2250-score} out of ${total} points to reach your goal of ${goal}%!`;
 
+        case 80:
+            return `You are currently at ${score} pionts and need ${2000-score} out of ${total} points to reach your goal of ${goal}%!`;
+
+        case 70:
+            return `You are currently at ${score} pionts and need ${1750-score} out of ${total} points to reach your goal of ${goal}%!`;
+
+        case 60:
+            return `You are currently at ${score} pionts and need ${1500-score} out of ${total} points to reach your goal of ${goal}%!`;
+        
+        default:
+            return "To receive a specified grade, please enter either 90, 80, 70 or 60 to find out how many additional points you need."
+    }
+}
+
+document.getElementById("resolution").innerHTML = resolution(goal,total,score)
